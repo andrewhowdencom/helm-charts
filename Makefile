@@ -1,6 +1,3 @@
-repo-add:
-	helm repo add
-
 dependency-update:
 	helm dependency update
 
