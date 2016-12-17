@@ -1,6 +1,9 @@
 dependency-update:
 	helm dependency update
 
+repo-index:
+	cd docs && helm repo index
+
 add-custom-repo:
 	helm repo add supernami https://supernami.github.io/helm-charts/
 
