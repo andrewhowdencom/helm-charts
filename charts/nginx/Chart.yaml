@@ -1,0 +1,15 @@
+apiVersion: v1
+description: A Helm chart for Kubernetes
+name: nginx
+version: 0.1.0
+keywords:
+- nginx
+- http
+- www
+- web
+sources:
+- "https://supernami.github.io/helm-nginx/"
+- "https://hub.docker.com/_/nginx/"
+maintainers:
+- name: SuperNami
+  email: supernami@tutamail.com

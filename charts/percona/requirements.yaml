@@ -1,0 +1,4 @@
+dependencies:
+  - name: percona
+    version: 0.1.0
+    repository: https://supernami.github.io/helm-percona/

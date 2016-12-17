@@ -1,0 +1,16 @@
+name: percona
+version: 0.1.0
+description: Chart for Percona server
+keywords:
+- mysql
+- percona
+- database
+- sql
+home: https://www.percona.com/software/mysql-database/percona-server
+sources:
+- https://supernami.github.io/helm-percona/
+- https://hub.docker.com/r/library/percona
+maintainers:
+- name: SuperNami
+  email: supernami@tutamail.com
+engine: gotpl

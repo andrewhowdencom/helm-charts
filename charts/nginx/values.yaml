@@ -1,0 +1,34 @@
+# How many instances
+replicaCount: 1
+image:
+  repository: nginx
+  tag: stable
+  pullPolicy: IfNotPresent
+
+# LoadBalancer, NodePort or ClusterIp
+service:
+  name: nginx
+  type: LoadBalancer
+  httpexternalPort: 80
+  httpinternalPort: 80
+  httpsexternalPort: 443
+  httpsinternalPort: 443
+
+# Compute resources
+# 1000m equal to 1 GCP core
+# 100m equal to 0.1 GCP core
+resources:
+  limits:
+    cpu: 10m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 128Mi
+
+# Nginx configuration data persistence
+persistence:
+  enabled: true
+  config:
+    storageClass: generic
+    accessMode: ReadWriteOnce
+    size: 1Gi
