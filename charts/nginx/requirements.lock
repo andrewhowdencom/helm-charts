@@ -1,0 +1,9 @@
+dependencies:
+- name: drupal-fpm
+  repository: https://supernami.github.io/helm-charts/
+  version: 0.1.0
+- name: mariadb
+  repository: https://kubernetes-charts.storage.googleapis.com/
+  version: 0.5.2
+digest: sha256:101192fc1085ad3b0c6a16573dacbd5a6488a6df539326c23e5bbbee041ff239
+generated: 2016-12-28T15:00:19.13129102+01:00
