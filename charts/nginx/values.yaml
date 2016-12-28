@@ -47,6 +47,8 @@ persistence:
 ## MariaDB chart configuration
 ##
 mariadb:
+#  mariadbUser:
+  mariadbPassword: developmentpw
   mariadbRootPassword: developmentpw
   persistence:
     enabled: true
