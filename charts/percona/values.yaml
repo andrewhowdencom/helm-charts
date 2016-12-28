@@ -7,7 +7,11 @@ imageTag: "5.7.16"
 ## Kubernetes configuration
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ##
-serviceType: LoadBalancer
+service:
+  type: NodePort
+  name: percona
+  internalPort: 3306
+  externalPort: 3306
 
 ## Specify password for root user
 ##

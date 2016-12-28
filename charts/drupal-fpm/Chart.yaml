@@ -5,7 +5,7 @@ version: 0.1.0
 keywords:
 - drupal-fpm
 sources:
-- "https://supernami.github.io/helm-drupal-fpm/"
+- "https://supernami.github.io/helm-charts/"
 - "https://hub.docker.com/_/drupal/"
 maintainers:
 - name: SuperNami

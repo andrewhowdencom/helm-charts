@@ -17,10 +17,8 @@ imagePullPolicy: IfNotPresent
 ##
 service:
   type: LoadBalancer
-  httpexternalPort: 80
-  httpinternalPort: 80
-  httpsexternalPort: 443
-  httpsinternalPort: 443
+  externalPort: 9000
+  internalPort: 9000
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

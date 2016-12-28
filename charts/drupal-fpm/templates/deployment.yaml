@@ -21,7 +21,7 @@ spec:
         imagePullPolicy: {{ default "IfNotPresent" .Values.imagePullPolicy | quote }}
         ports:
         - name: php-fpm
-          containerPort: 9000
+          containerPort: {{ default "9000" .Values.service.internalPort }}
         livenessProbe:
           httpGet:
             path: /
