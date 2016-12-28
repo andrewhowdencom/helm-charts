@@ -22,29 +22,23 @@ repo-index:
 	helm repo index docs/
 
 
-rm: rm-index rm-nginx rm-drupal-fpm rm-percona rm-nginx-lock rm-drupal-fpm-lock
+rm: rm-docs rm-nginx rm-drupal-fpm
 
-rm-index:
+rm-docs:
 	rm docs/index.yaml
+	rm docs/nginx-${VERSION}.tgz && \
+	rm docs/drupal-fpm-${VERSION}.tgz && \
+	rm docs/percona-${VERSION}.tgz
 
 rm-nginx:
-	rm docs/nginx-${VERSION}.tgz && \
+	rm charts/nginx/requirements.lock && \
 	rm charts/nginx/charts/drupal-fpm-${VERSION}.tgz && \
 	rm charts/nginx/charts/mariadb-0.5.2.tgz
 
 rm-drupal-fpm:
-	rm docs/drupal-fpm-${VERSION}.tgz && \
+	rm charts/drupal-fpm/requirements.lock && \
 	rm charts/drupal-fpm/charts/nginx-${VERSION}.tgz && \
 	rm charts/drupal-fpm/charts/mariadb-0.5.2.tgz
-
-rm-percona:
-	rm docs/percona-${VERSION}.tgz
-
-rm-nginx-lock:
-	rm charts/nginx/requirements.lock
-
-rm-drupal-fpm-lock:
-	rm charts/drupal-fpm/requirements.lock
 
 
 lint: lint-nginx lint-drupal-fpm lint-percona

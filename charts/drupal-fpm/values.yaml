@@ -19,3 +19,6 @@ resources:
   requests:
     cpu: 25m
     memory: 128Mi
+
+service:
+  internalPort: 9000
