@@ -1,0 +1,61 @@
+apiVersion: v1
+entries:
+  drupal-fpm:
+  - apiVersion: v1
+    created: 2016-12-28T13:01:55.156476795+01:00
+    description: A Helm chart for Kubernetes
+    digest: ab0c7092507601e53e80acd27d2640915c9cce44c4943c9b366dfe0cac901fe2
+    keywords:
+    - drupal-fpm
+    maintainers:
+    - email: supernami@tutamail.com
+      name: SuperNami
+    name: drupal-fpm
+    sources:
+    - https://supernami.github.io/helm-charts/
+    - https://hub.docker.com/_/drupal/
+    urls:
+    - drupal-fpm-0.1.0.tgz
+    version: 0.1.0
+  nginx:
+  - apiVersion: v1
+    created: 2016-12-28T13:01:55.156804591+01:00
+    description: A Helm chart for Kubernetes
+    digest: 0ae6787a7bfd4fe7921223b9767807ed488a2648f3519acf51558eb546608fb7
+    keywords:
+    - nginx
+    - http
+    - www
+    - web
+    maintainers:
+    - email: supernami@tutamail.com
+      name: SuperNami
+    name: nginx
+    sources:
+    - https://supernami.github.io/helm-charts/
+    - https://hub.docker.com/r/supernami/nginx/
+    urls:
+    - nginx-0.1.0.tgz
+    version: 0.1.0
+  percona:
+  - created: 2016-12-28T13:01:55.158024755+01:00
+    description: Chart for Percona server
+    digest: 37f5e18c88c4776e9219315dc6c5b943576fe09bc7b75b0691800a2e586752f7
+    engine: gotpl
+    home: https://www.percona.com/software/mysql-database/percona-server
+    keywords:
+    - mysql
+    - percona
+    - database
+    - sql
+    maintainers:
+    - email: supernami@tutamail.com
+      name: SuperNami
+    name: percona
+    sources:
+    - https://supernami.github.io/helm-percona/
+    - https://hub.docker.com/r/library/percona
+    urls:
+    - percona-0.1.0.tgz
+    version: 0.1.0
+generated: 2016-12-28T13:01:55.155946984+01:00
