@@ -1,9 +1,9 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: {{ template "fullname" . }}
+  name: "{{ template "fullname" . }}"
   labels:
-    app: {{ template "fullname" . }}
+    app: "{{ template "fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
@@ -12,32 +12,13 @@ spec:
   template:
     metadata:
       labels:
-        app: {{ template "fullname" . }}
+        app: "{{ template "fullname" . }}"
         release: "{{ .Release.Name }}"
     spec:
       containers:
-      - name: {{ template "fullname" . }}
+      - name: "{{ template "fullname" . }}"
         image: "{{ default "drupal" .Values.image.repository }}:{{ default "8-fpm" .Values.image.tag }}"
         imagePullPolicy: {{ default "IfNotPresent" .Values.imagePullPolicy | quote }}
-        env:
-        - name: MARIADB_HOST
-          value: {{ template "mariadb.fullname" . }}
-        - name: MARIADB_PORT
-          value: "3306"
-        - name: MARIADB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "mariadb.fullname" . }}
-              key: mariadb-root-password
-        - name: DRUPAL_USERNAME
-          value: {{ default "" .Values.drupalUsername | quote }}
-        - name: DRUPAL_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: {{ template "fullname" . }}
-              key: drupal-password
-        - name: DRUPAL_EMAIL
-          value: {{ default "" .Values.drupalEmail | quote }}
         ports:
         - name: php-fpm
           containerPort: 9000
@@ -62,7 +43,7 @@ spec:
       - name: data
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
-          claimName: {{ template "fullname" . }}-data
+          claimName: "{{ template "fullname" . }}-data"
       {{- else }}
         emptyDir: {}
       {{- end }}

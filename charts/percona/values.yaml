@@ -4,6 +4,11 @@
 #imageTag: "latest"
 imageTag: "5.7.16"
 
+## Kubernetes configuration
+## For minikube, set this to NodePort, elsewhere use LoadBalancer
+##
+serviceType: LoadBalancer
+
 ## Specify password for root user
 ##
 ## Default: random 10 character string

@@ -1,1 +1,1 @@
-Drupal fpm charts
+Kubernetes charts repository

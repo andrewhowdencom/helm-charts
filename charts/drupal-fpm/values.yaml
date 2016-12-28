@@ -12,16 +12,15 @@ image:
 ##
 imagePullPolicy: IfNotPresent
 
-## Settings
-##
-drupalUsername: user
-drupalPassword: bitnami
-drupalEmail: user@example.com
-
 ## Kubernetes configuration
 ## For minikube, set this to NodePort, elsewhere use LoadBalancer
 ##
-serviceType: LoadBalancer
+service:
+  type: LoadBalancer
+  httpexternalPort: 80
+  httpinternalPort: 80
+  httpsexternalPort: 443
+  httpsinternalPort: 443
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

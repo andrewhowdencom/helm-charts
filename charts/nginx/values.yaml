@@ -1,9 +1,14 @@
 # How many instances
 replicaCount: 1
 image:
-  repository: nginx
-  tag: stable
+  repository: supernami/nginx
+  tag: latest
   pullPolicy: IfNotPresent
+
+# Website domain
+website:
+  name: website
+  tld: com
 
 # LoadBalancer, NodePort or ClusterIp
 service:

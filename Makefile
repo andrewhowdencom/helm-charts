@@ -26,34 +26,34 @@ package-drupal-fpm:
 lint: lint-nginx lint-percona lint-drupal-fpm
 
 lint-nginx:
-	helm lint nginx
+	helm lint charts/nginx
 
 lint-percona:
-	helm lint percona
+	helm lint charts/percona
 
 lint-drupal-fpm:
-	helm lint drupal-fpm
+	helm lint charts/drupal-fpm
 
 
 dry-run: dry-run-nginx dry-run-percona dry-run-drupal-fpm
 
 dry-run-nginx:
-	helm install --dry-run --debug nginx
+	helm install --dry-run --debug charts/nginx
 
 dry-run-percona:
-	helm install --dry-run --debug percona
+	helm install --dry-run --debug charts/percona
 
 dry-run-drupal-fpm:
-	helm install --dry-run --debug drupal-fpm
+	helm install --dry-run --debug charts/drupal-fpm
 
 
 install: install-nginx install-percona install-drupal-fpm
 
 install-nginx:
-	helm install nginx
+	helm install charts/nginx
 
 install-percona:
-	helm install percona
+	helm install charts/percona
 
 install-drupal-fpm:
-	helm install drupal-fpm
+	helm install charts/drupal-fpm

@@ -2,9 +2,9 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metaconfig:
-  name: {{ template "fullname" . }}-config
+  name: "{{ template "fullname" . }}-config"
   labels:
-    app: {{ template "fullname" . }}
+    app: "{{ template "fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
