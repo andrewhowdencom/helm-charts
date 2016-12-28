@@ -1,8 +1,10 @@
+VERSION=0.1.0
+
 dependency-update:
 	helm dependency update
 
 repo-index:
-	cd docs && helm repo index
+	helm repo index docs/
 
 add-custom-repo:
 	helm repo add supernami https://supernami.github.io/helm-charts/
@@ -12,15 +14,15 @@ package: package-nginx package-percona package-drupal-fpm
 
 package-nginx:
 	helm package charts/nginx && \
-	mv nginx-0.1.0.tgz docs
+	mv nginx-${VERSION}.tgz docs
 
 package-percona:
 	helm package charts/percona && \
-	mv percona-0.1.0.tgz docs
+	mv percona-${VERSION}.tgz docs
 
 package-drupal-fpm:
 	helm package charts/drupal-fpm && \
-	mv drupal-fpm-0.1.0.tgz docs
+	mv drupal-fpm-${VERSION}.tgz docs
 
 
 lint: lint-nginx lint-percona lint-drupal-fpm

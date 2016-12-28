@@ -1,0 +1,40 @@
+apiVersion: v1
+entries:
+  drupal-fpm:
+  - apiVersion: v1
+    created: 2016-12-28T11:24:14.645791912+01:00
+    description: A Helm chart for Kubernetes
+    digest: 6efcec6b99df94aa53762bac320f50b2f28ae1585735dc8d3d8b5861667953ed
+    keywords:
+    - drupal-fpm
+    maintainers:
+    - email: supernami@tutamail.com
+      name: SuperNami
+    name: drupal-fpm
+    sources:
+    - https://supernami.github.io/helm-drupal-fpm/
+    - https://hub.docker.com/_/drupal/
+    urls:
+    - drupal-fpm-0.1.0.tgz
+    version: 0.1.0
+  nginx:
+  - apiVersion: v1
+    created: 2016-12-28T11:24:14.646260272+01:00
+    description: A Helm chart for Kubernetes
+    digest: 299d929984e20619e8a7db62e852fe1f3582ae2ee67e280a7a1dafb17ac428c7
+    keywords:
+    - nginx
+    - http
+    - www
+    - web
+    maintainers:
+    - email: supernami@tutamail.com
+      name: SuperNami
+    name: nginx
+    sources:
+    - https://supernami.github.io/helm-nginx/
+    - https://hub.docker.com/_/nginx/
+    urls:
+    - nginx-0.1.0.tgz
+    version: 0.1.0
+generated: 2016-12-28T11:24:14.645068958+01:00
