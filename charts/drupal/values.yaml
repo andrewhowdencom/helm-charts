@@ -1,0 +1,75 @@
+replicaCount: 1
+
+## Specify a imagePullPolicy
+## Defaults to 'Always' if image tag is 'latest', else set to 'IfNotPresent'
+## ref: http://kubernetes.io/docs/user-guide/images/#pre-pulling-images
+
+## Nginx image version
+## ref: https://hub.docker.com/supernami/nginx/
+##
+nginx:
+  image:
+    repository: supernami/nginx
+    tag: latest
+    pullPolicy: IfNotPresent
+
+## Drupal image version
+## ref: https://hub.docker.com/_/drupal/
+##
+drupal:
+  image:
+    repository: drupal
+    tag: 8-fpm
+    PullPolicy: IfNotPresent
+    internalPort: 9000
+
+# Website domain
+website:
+  name: website
+  tld: com
+
+# LoadBalancer, NodePort or ClusterIp
+service:
+  name: nginx-service
+  type: LoadBalancer
+  httpexternalPort: 80
+  httpinternalPort: 80
+  httpsexternalPort: 443
+  httpsinternalPort: 443
+
+# Compute resources
+# 1000m equal to 1 GCP core
+# 100m equal to 0.1 GCP core
+resources:
+  limits:
+    cpu: 10m
+    memory: 128Mi
+  requests:
+    cpu: 10m
+    memory: 128Mi
+
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
+persistence:
+  enabled: true
+  data:
+    storageClass: generic
+    accessMode: ReadWriteMany
+    size: 8Gi
+  config:
+    storageClass: generic
+    accessMode: ReadWriteOnce
+    size: 1Gi
+
+## MariaDB chart configuration
+##
+mariadb:
+  #mariadbUser: user
+  #mariadbPassword: developmentpw
+  mariadbRootPassword: developmentpw
+  persistence:
+    enabled: true
+    storageClass: generic
+    accessMode: ReadWriteOnce
+    size: 8Gi

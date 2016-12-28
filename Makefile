@@ -77,7 +77,10 @@ install-percona:
 	helm install charts/percona
 
 
-requirements: drupal-fpm-dependencies
+requirements: drupal-dependencies
+
+drupal-dependencies:
+	cd charts/drupal && helm dependency update
 
 nginx-dependencies:
 	cd charts/nginx && helm dependency update
