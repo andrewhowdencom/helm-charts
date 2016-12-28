@@ -22,3 +22,6 @@ resources:
 
 service:
   internalPort: 9000
+
+persistence:
+  enabled: true

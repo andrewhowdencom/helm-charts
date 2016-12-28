@@ -51,6 +51,13 @@ spec:
         - name: config
           mountPath: /etc/nginx
       volumes:
+      - name: data
+      {{- if .Values.persistence.enabled }}
+        persistentVolumeClaim:
+          claimName: "{{ template "fullname" . }}-data"
+      {{- else }}
+        emptyDir: {}
+      {{- end }}
       - name: config
       {{- if .Values.persistence.enabled }}
         persistentVolumeClaim:
