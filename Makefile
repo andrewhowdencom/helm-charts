@@ -22,19 +22,29 @@ repo-index:
 	helm repo index docs/
 
 
-rm-packages: rm-index rm-nginx rm-drupal-fpm rm-percona
+rm: rm-index rm-nginx rm-drupal-fpm rm-mariadb rm-percona rm-requirements-lock
 
 rm-index:
 	rm docs/index.yaml
 
 rm-nginx:
-	rm docs/nginx-${VERSION}.tgz
+	rm docs/nginx-${VERSION}.tgz && \
+	rm charts/drupal-fpm/charts/nginx-${VERSION}.tgz
 
 rm-drupal-fpm:
-	rm docs/drupal-fpm-${VERSION}.tgz
+	rm docs/drupal-fpm-${VERSION}.tgz && \
+	rm charts/nginx/charts/drupal-fpm-${VERSION}.tgz
+
+rm-mariadb:
+	rm charts/drupal-fpm/charts/mariadb-0.5.2.tgz && \
+	rm charts/nginx/charts/mariadb-0.5.2.tgz
 
 rm-percona:
 	rm docs/percona-${VERSION}.tgz
+
+rm-requirements-lock:
+	rm charts/drupal-fpm/requirements.lock && \
+	rm charts/nginx/requirements.lock
 
 
 lint: lint-nginx lint-drupal-fpm lint-percona
@@ -74,6 +84,9 @@ install-percona:
 
 
 requirements: drupal-fpm-dependencies
+
+nginx-dependencies:
+	cd charts/nginx && helm dependency update
 
 drupal-fpm-dependencies:
 	cd charts/drupal-fpm && helm dependency update
