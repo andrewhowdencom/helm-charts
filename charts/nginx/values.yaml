@@ -37,7 +37,7 @@ persistence:
   enabled: true
   data:
     storageClass: generic
-    accessMode: ReadWriteOnce
+    accessMode: ReadWriteMany
     size: 8Gi
   config:
     storageClass: generic

@@ -2,7 +2,7 @@ apiVersion: v1
 entries:
   drupal-fpm:
   - apiVersion: v1
-    created: 2016-12-28T15:00:07.811273536+01:00
+    created: 2016-12-28T15:00:53.894288582+01:00
     description: A Helm chart for Kubernetes
     digest: 3e3dd998d1c0deb630ab17b56345b913de4ba0c57d9a49a518cd43c80e23e5e5
     keywords:
@@ -19,7 +19,7 @@ entries:
     version: 0.1.0
   nginx:
   - apiVersion: v1
-    created: 2016-12-28T15:00:07.811600995+01:00
+    created: 2016-12-28T15:00:53.894627475+01:00
     description: A Helm chart for Kubernetes
     digest: 3c3663963383d8e5963cafe1b664c076e237d344037fa12ee2f0e5a565ecde50
     keywords:
@@ -38,7 +38,7 @@ entries:
     - nginx-0.1.0.tgz
     version: 0.1.0
   percona:
-  - created: 2016-12-28T15:00:07.811934092+01:00
+  - created: 2016-12-28T15:00:53.894984802+01:00
     description: Chart for Percona server
     digest: 37f5e18c88c4776e9219315dc6c5b943576fe09bc7b75b0691800a2e586752f7
     engine: gotpl
@@ -58,4 +58,4 @@ entries:
     urls:
     - percona-0.1.0.tgz
     version: 0.1.0
-generated: 2016-12-28T15:00:07.810849801+01:00
+generated: 2016-12-28T15:00:53.893854916+01:00
