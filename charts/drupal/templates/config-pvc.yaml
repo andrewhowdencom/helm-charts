@@ -1,8 +1,8 @@
 {{- if .Values.persistence.enabled -}}
 kind: PersistentVolumeClaim
 apiVersion: v1
-metaconfig:
-  name: "{{ template "fullname" . }}-config"
+metadata:
+  name: "{{ .Release.Name }}-nginx-config"
   labels:
     app: "{{ template "fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"

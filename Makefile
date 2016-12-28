@@ -53,7 +53,10 @@ lint-percona:
 	helm lint charts/percona
 
 
-dry-run: dry-run-nginx dry-run-drupal-fpm dry-run-percona
+dry-run: dry-run-drupal dry-run-nginx dry-run-drupal-fpm dry-run-percona
+
+dry-run-drupal:
+	helm install --dry-run --debug charts/drupal
 
 dry-run-nginx:
 	helm install --dry-run --debug charts/nginx
@@ -65,7 +68,10 @@ dry-run-percona:
 	helm install --dry-run --debug charts/percona
 
 
-install: install-nginx install-drupal-fpm install-percona
+install: install-drupal install-nginx install-drupal-fpm install-percona
+
+install-drupal:
+	helm install charts/drupal
 
 install-nginx:
 	helm install charts/nginx

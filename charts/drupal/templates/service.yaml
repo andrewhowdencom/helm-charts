@@ -3,9 +3,9 @@ kind: Service
 metadata:
   name: "{{ template "fullname" . }}"
   labels:
-    heritage: {{ .Release.Service | quote }}
-    release: {{ .Release.Name | quote }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
+    release: {{ .Release.Name | quote }}
+    heritage: {{ .Release.Service | quote }}
 spec:
   type: {{ .Values.service.type }}
   ports:
