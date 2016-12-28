@@ -12,24 +12,6 @@ image:
 ##
 imagePullPolicy: IfNotPresent
 
-## Kubernetes configuration
-## For minikube, set this to NodePort, elsewhere use LoadBalancer
-##
-service:
-  type: LoadBalancer
-  externalPort: 9000
-  internalPort: 9000
-
-## Enable persistence using Persistent Volume Claims
-## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
-##
-persistence:
-  enabled: true
-  data:
-    storageClass: generic
-    accessMode: ReadWriteOnce
-    size: 8Gi
-
 ## Configure resource requests and limits
 ## ref: http://kubernetes.io/docs/user-guide/compute-resources/
 ##
@@ -37,13 +19,3 @@ resources:
   requests:
     cpu: 25m
     memory: 128Mi
-
-## MariaDB chart configuration
-##
-mariadb:
-  mariadbRootPassword: developmentpw
-  persistence:
-    enabled: true
-    storageClass: generic
-    accessMode: ReadWriteOnce
-    size: 8Gi

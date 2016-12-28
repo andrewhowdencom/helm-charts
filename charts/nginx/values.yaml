@@ -30,10 +30,26 @@ resources:
     cpu: 10m
     memory: 128Mi
 
-# Nginx configuration data persistence
+## Enable persistence using Persistent Volume Claims
+## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/
+##
 persistence:
   enabled: true
+  data:
+    storageClass: generic
+    accessMode: ReadWriteOnce
+    size: 8Gi
   config:
     storageClass: generic
     accessMode: ReadWriteOnce
     size: 1Gi
+
+## MariaDB chart configuration
+##
+mariadb:
+  mariadbRootPassword: developmentpw
+  persistence:
+    enabled: true
+    storageClass: generic
+    accessMode: ReadWriteOnce
+    size: 8Gi
