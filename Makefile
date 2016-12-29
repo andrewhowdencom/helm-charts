@@ -3,6 +3,36 @@ VERSION=0.1.0
 add-custom-repo:
 	helm repo add supernami https://supernami.github.io/helm-charts/
 
+check-config:
+	kubectl config view
+
+check-context:
+	kubectl config current-context
+
+
+dev: namespace-dev set-context-dev use-context-prod
+
+namespace-dev:
+	kubectl create -f namespaces/namespace-dev.json
+
+set-context-dev:
+	kubectl config set-context dev --namespace=development --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
+
+use-context-dev:
+	kubectl config use-context dev
+
+
+prod: namespace-prod set-context-prod use-context-prod
+
+namespace-prod:
+	kubectl create -f namespaces/namespace-prod.json
+
+set-context-prod:
+	kubectl config set-context prod --namespace=development --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
+
+use-context-prod:
+	kubectl config use-context prod
+
 
 package: package-nginx package-drupal-fpm package-percona repo-index
 
