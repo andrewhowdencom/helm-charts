@@ -1,8 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: nginxconfig
-data:
-  NAME: "{{ .Values.website.name }}"
-  TLD: "{{ .Values.website.tld }}"
-  UPSTREAM: "{{ template "fullname" . }}-fpm"
