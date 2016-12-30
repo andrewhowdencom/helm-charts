@@ -14,6 +14,33 @@ spec:
       labels:
         app: "{{ template "fullname" . }}"
         release: "{{ .Release.Name }}"
+      annotations:
+        pod.beta.kubernetes.io/init-containers: '[
+          {
+            "name": "copy-nginx-files",
+            "image": "{{ default "supernami/nginx" .Values.nginx.image.repository }}:{{ default "latest" .Values.nginx.image.tag }}",
+            "imagePullPolicy": {{ default "IfNotPresent" .Values.nginx.image.pullPolicy | quote }},
+            "command": ["cp", "-a", "/etc/nginx/.", "/opt/"],
+            "volumeMounts": [
+              {
+                "name": "config",
+                "mountPath": "/opt"
+              }
+            ]
+          },
+          {
+            "name": "copy-drupal-files",
+            "image": "{{ default "drupal" .Values.drupal.image.repository }}:{{ default "8-fpm" .Values.drupal.image.tag }}",
+            "imagePullPolicy": {{ default "IfNotPresent" .Values.drupal.image.pullPolicy | quote }},
+            "command": ["cp", "-a", "/var/www/html/.", "/opt/"],
+            "volumeMounts": [
+              {
+                "name": "data",
+                "mountPath": "/opt"
+              }
+            ]
+          }
+        ]'
     spec:
       containers:
       - name: "{{ template "fullname" . }}-nginx"
@@ -25,7 +52,7 @@ spec:
         - name: TLD
           value: "{{ .Values.website.tld }}"
         - name: UPSTREAM
-          value: "{{ template "fullname" . }}-fpm"
+          value: ""
         ports:
         - name: http
           containerPort: {{ default 80 .Values.service.httpinternalPort }}
