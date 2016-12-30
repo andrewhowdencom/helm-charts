@@ -28,7 +28,10 @@ namespace-prod:
 	kubectl create -f namespaces/namespace-prod.json
 
 set-context-prod:
-	kubectl config set-context prod --namespace=development --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
+	kubectl config set-context prod --namespace=production --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
+
+set-context-dev:
+	kubectl config set-context dev --namespace=development --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
 
 use-context-prod:
 	kubectl config use-context prod
