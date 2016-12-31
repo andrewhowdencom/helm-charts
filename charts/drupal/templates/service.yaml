@@ -1,21 +1,23 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: "{{ template "fullname" . }}"
+  name: {{ template "fullname" . }}
+  namespace: {{ default "default" .Values.namespace }}
   labels:
+    app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
-    release: {{ .Release.Name | quote }}
-    heritage: {{ .Release.Service | quote }}
+    release: "{{ .Release.Name }}"
+    heritage: "{{ .Release.Service }}"
 spec:
-  type: {{ .Values.service.type }}
+  type: "{{ .Values.service.type }}"
   ports:
-  - name: nginx-http
+  - name: http
     protocol: TCP
     port: {{ default 80 .Values.service.httpexternalPort }}
-    targetPort: {{ default 80 .Values.service.httpinternalPort }}
-  - name: nginx-https
+    targetPort: http
+  - name: https
     protocol: TCP
     port: {{ default 443 .Values.service.httpsexternalPort }}
-    targetPort: {{ default 443 .Values.service.httpsinternalPort }}
+    targetPort: https
   selector:
-    app: "{{ template "fullname" . }}"
+    app: {{ template "fullname" . }}

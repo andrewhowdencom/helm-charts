@@ -7,6 +7,8 @@
 USERNAME=supernami
 VERSION=1.0
 
+new-version: build tag push
+
 build:
 	docker build -t ${USERNAME}/nginx:${VERSION} .
 

@@ -30,9 +30,6 @@ namespace-prod:
 set-context-prod:
 	kubectl config set-context prod --namespace=production --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
 
-set-context-dev:
-	kubectl config set-context dev --namespace=development --cluster=${CLUSTER_VAR} --user=${CLUSTER_VAR}
-
 use-context-prod:
 	kubectl config use-context prod
 
@@ -80,13 +77,37 @@ dry-run-percona:
 install: install-drupal install-percona
 
 install-drupal:
-	helm install charts/drupal
+	helm install --name ${RELEASE} charts/drupal
 
 install-percona:
-	helm install charts/percona
+	helm install --name ${RELEASE} charts/percona
 
 
 requirements: drupal-dependencies
 
 drupal-dependencies:
 	cd charts/drupal && helm dependency update
+
+
+# Run on pod
+nslookup:
+	nslookup ${RELEASE}
+
+# Run on host
+get-pods:
+	kubectl get pods -l =${APP}
+
+describe-pod:
+	kubectl describe pod ${NAME}
+
+logs-drupal-fpm:
+	kubectl logs ${NAME} ${DRUPAL_FPM_CONTAINER}
+
+logs-nginx:
+	kubectl logs ${NAME} ${NGINX_CONTAINER}
+
+get-service:
+	kubectl get service ${APP} -o json
+
+get-endpoints:
+	kubectl get endpoints ${APP}

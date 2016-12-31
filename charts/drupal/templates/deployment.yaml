@@ -1,9 +1,10 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: "{{ template "fullname" . }}"
+  name: {{ template "fullname" . }}
+  namespace: {{ default "default" .Values.namespace }}
   labels:
-    app: "{{ template "fullname" . }}"
+    app: {{ template "fullname" . }}
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"
     release: "{{ .Release.Name }}"
     heritage: "{{ .Release.Service }}"
@@ -32,7 +33,7 @@ spec:
             "name": "copy-drupal-files",
             "image": "{{ default "drupal" .Values.drupal.image.repository }}:{{ default "8-fpm" .Values.drupal.image.tag }}",
             "imagePullPolicy": {{ default "IfNotPresent" .Values.drupal.image.pullPolicy | quote }},
-            "command": ["cp", "-a", "/var/www/html/.", "/opt/"],
+            "command": ["/bin/bash", "-c", "cp -a /var/www/html/. /opt/ && chown -R root:root /opt && chmod -R 755 /opt"],
             "volumeMounts": [
               {
                 "name": "data",
@@ -43,7 +44,7 @@ spec:
         ]'
     spec:
       containers:
-      - name: "{{ template "fullname" . }}-nginx"
+      - name: {{ template "fullname" . }}-nginx
         image: "{{ default "supernami/nginx" .Values.nginx.image.repository }}:{{ default "latest" .Values.nginx.image.tag }}"
         imagePullPolicy: {{ default "IfNotPresent" .Values.nginx.image.pullPolicy | quote }}
         env:
@@ -51,8 +52,6 @@ spec:
           value: "{{ .Values.website.name }}"
         - name: TLD
           value: "{{ .Values.website.tld }}"
-        - name: UPSTREAM
-          value: ""
         ports:
         - name: http
           containerPort: {{ default 80 .Values.service.httpinternalPort }}
@@ -61,13 +60,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: {{ .Values.service.httpinternalPort }}
+            port: {{ default 80 .Values.service.httpinternalPort }}
             initialDelaySeconds: 120
             timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /
-            port: {{ .Values.service.httpinternalPort }}
+            port: {{ default 80 .Values.service.httpinternalPort }}
             initialDelaySeconds: 5
             timeoutSeconds: 1
           resources:
@@ -77,7 +76,7 @@ spec:
           mountPath: /var/www/html
         - name: config
           mountPath: /etc/nginx
-      - name: "{{ template "fullname" . }}-fpm"
+      - name: {{ template "fullname" . }}-fpm
         image: "{{ default "drupal" .Values.drupal.image.repository }}:{{ default "8-fpm" .Values.drupal.image.tag }}"
         imagePullPolicy: {{ default "IfNotPresent" .Values.drupal.image.PullPolicy | quote }}
         ports:
@@ -86,13 +85,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: http
+            port: {{ default "9000" .Values.drupal.image.internalPort }}
           initialDelaySeconds: 120
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /
-            port: http
+            port: {{ default "9000" .Values.drupal.image.internalPort }}
           initialDelaySeconds: 5
           timeoutSeconds: 1
         resources:

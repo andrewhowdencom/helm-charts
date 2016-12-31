@@ -3,6 +3,7 @@ kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: "{{ .Release.Name }}-nginx-config"
+  namespace: {{ default "default" .Values.namespace }}
   labels:
     app: "{{ template "fullname" . }}"
     chart: "{{ .Chart.Name }}-{{ .Chart.Version }}"

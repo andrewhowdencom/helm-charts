@@ -1,5 +1,9 @@
 replicaCount: 1
 
+#namespace: default
+namespace: development
+#namespace: production
+
 ## Nginx image version
 ## ref: https://hub.docker.com/supernami/nginx/
 ##
@@ -24,7 +28,7 @@ website:
   name: website
   tld: com
 
-# LoadBalancer, NodePort or ClusterIp
+# LoadBalancer or NodePort
 service:
   name: nginx-service
   type: LoadBalancer
