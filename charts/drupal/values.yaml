@@ -42,11 +42,11 @@ service:
 # 100m equal to 0.1 GCP core
 resources:
   limits:
-    cpu: 10m
-    memory: 128Mi
+    cpu: 500m
+    memory: 512Mi
   requests:
-    cpu: 10m
-    memory: 128Mi
+    cpu: 500m
+    memory: 512Mi
 
 ## Enable persistence using Persistent Volume Claims
 ## ref: http://kubernetes.io/docs/user-guide/persistent-volumes/

@@ -77,10 +77,10 @@ dry-run-percona:
 install: install-drupal install-percona
 
 install-drupal:
-	helm install --name ${RELEASE} charts/drupal
+	helm install --name ${RELEASE} charts/drupal && kubectl get pods -o json
 
 install-percona:
-	helm install --name ${RELEASE} charts/percona
+	helm install --name ${RELEASE} charts/percona && kubectl get pods -o json
 
 
 requirements: drupal-dependencies
@@ -111,3 +111,8 @@ get-service:
 
 get-endpoints:
 	kubectl get endpoints ${APP}
+
+
+helm-delete:
+	./env-remove.sh && \
+	helm delete ${RELEASE}

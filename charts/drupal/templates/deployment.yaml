@@ -60,13 +60,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: {{ default 80 .Values.service.httpinternalPort }}
+            port: http
             initialDelaySeconds: 120
             timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /
-            port: {{ default 80 .Values.service.httpinternalPort }}
+            port: http
             initialDelaySeconds: 5
             timeoutSeconds: 1
           resources:
@@ -85,13 +85,13 @@ spec:
         livenessProbe:
           httpGet:
             path: /
-            port: {{ default "9000" .Values.drupal.image.internalPort }}
+            port: php-fpm
           initialDelaySeconds: 120
           timeoutSeconds: 5
         readinessProbe:
           httpGet:
             path: /
-            port: {{ default "9000" .Values.drupal.image.internalPort }}
+            port: php-fpm
           initialDelaySeconds: 5
           timeoutSeconds: 1
         resources:
