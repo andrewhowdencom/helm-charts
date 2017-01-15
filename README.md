@@ -1,6 +1,8 @@
-# Drupal
+# Drupal with nginx and php-fpm
 
 [Drupal](https://www.drupal.org/) is one of the most versatile open source content management systems on the market.
+[Nginx](https://www.nginx.com/) nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.
+[PHP-FPM](https://php-fpm.org/)PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites.
 
 ## TL;DR;
 
@@ -14,6 +16,8 @@ $ helm install supernami/drupal
 This chart bootstraps a [Drupal](https://github.com/bitnami/bitnami-docker-drupal) deployment on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 It also packages the [Bitnami MariaDB chart](https://github.com/kubernetes/charts/tree/master/stable/mariadb) which is required for bootstrapping a MariaDB deployment for the database requirements of the Drupal application.
+
+It's different from [Bitnami's drupal kubernetes chart](https://github.com/kubernetes/charts/tree/master/stable/drupal) in the fact that it uses nginx and php-fpm instead of apache.
 
 ## Prerequisites
 
