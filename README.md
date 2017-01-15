@@ -1,7 +1,9 @@
 # Drupal with nginx and php-fpm
 
 [Drupal](https://www.drupal.org/) is one of the most versatile open source content management systems on the market.
+
 [Nginx](https://www.nginx.com/) nginx [engine x] is an HTTP and reverse proxy server, a mail proxy server, and a generic TCP/UDP proxy server, originally written by Igor Sysoev.
+
 [PHP-FPM](https://php-fpm.org/)PHP-FPM (FastCGI Process Manager) is an alternative PHP FastCGI implementation with some additional features useful for sites of any size, especially busier sites.
 
 ## TL;DR;
