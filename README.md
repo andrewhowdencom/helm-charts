@@ -1,4 +1,4 @@
-# Drupal with nginx and php-fpm
+# Drupal with Nginx and PHP-FPM
 
 [Drupal](https://www.drupal.org/) is one of the most versatile open source content management systems on the market.
 
@@ -56,37 +56,37 @@ The following tables lists the configurable parameters of the Drupal chart and t
 | --------------------------------- | ------------------------------------- | --------------------------------------------------------- |
 | `replicaCount`                    | Amount of replica's                   | `1`                                                       |
 | `namespace`                       | Deploy in which namespace             | `default`                                                 |
-| `nginx.image.repository`          |                                       | ``                                                        |
-| `nginx.image.tag`                 |                                       | ``                                                        |
-| `nginx.image.pullPolicy`          |                                       | ``                                                 |
-| `drupal.image.repository`         |                                       | ``                                                 |
-| `drupal.image.tag`                |                                       | ``                                                 |
-| `drupal.image.pullPolicy`         |                                       | ``                                                 |
-| `drupal.image.internalPort`       |                                       | ``                                                 |
-| `website.name`                    |                                       | ``                                                 |
-| `website.tld`                     |                                       | ``                                                 |
-| `service.name`                    |                                       | ``                                                 |
-| `service.type`                    |                                       | ``                                                 |
-| `service.httpexternalPort`        |                                       | ``                                                 |
-| `service.httpinternalPort`        |                                       | ``                                                 |
-| `service.httpsexternalPort`       |                                       | ``                                                 |
-| `service.httpsinternalPort`       |                                       | ``                                                 |
-| `resources.limits.cpu`            |                                       | ``                                                 |
-| `resources.limits.memory`         |                                       | ``                                                 |
-| `resources.requests.cpu`          |                                       | ``                                                 |
-| `resources.requests.memory`       |                                       | ``                                                 |
-| `persistence.enabled.true`        |                                       | ``                                                 |
-| `persistence.data.storageClass`   |                                       | ``                                                 |
-| `persistence.data.accessMode`     |                                       | ``                                                 |
-| `persistence.data.size`           |                                       | ``                                                 |
-| `persistence.config.storageClass` |                                       | ``                                                 |
-| `persistence.config.accessMode`   |                                       | ``                                                 |
-| `persistence.config.size`         |                                       | ``                                                 |
-| `mariadb.mariadbRootPassword`     |                                       | ``                                                 |
-| `mariadb.persistence.enabled`     |                                       | ``                                                 |
-| `mariadb.persistence.storageClass`|                                       | ``                                                 |
-| `mariadb.persistence.accessMode`  |                                       | ``                                                 |
-| `mariadb.persistence.size`        |                                       | ``                                                 |
+| `nginx.image.repository`          |                                       | `supernami/nginx`                                         |
+| `nginx.image.tag`                 |                                       | `latest`                                                  |
+| `nginx.image.pullPolicy`          |                                       | `IfNotPresent`                                            |
+| `drupal.image.repository`         |                                       | `drupal`                                                  |
+| `drupal.image.tag`                |                                       | `8-fpm`                                                   |
+| `drupal.image.pullPolicy`         |                                       | `IfNotPresent`                                            |
+| `drupal.image.internalPort`       |                                       | `9000`                                                    |
+| `website.name`                    |                                       | `website`                                                 |
+| `website.tld`                     |                                       | `com`                                                     |
+| `service.name`                    |                                       | `nginx-service`                                           |
+| `service.type`                    |                                       | `LoadBalancer`                                            |
+| `service.httpexternalPort`        |                                       | `80`                                                      |
+| `service.httpinternalPort`        |                                       | `80`                                                      |
+| `service.httpsexternalPort`       |                                       | `443`                                                     |
+| `service.httpsinternalPort`       |                                       | `443`                                                     |
+| `resources.limits.cpu`            |                                       | `250m`                                                    |
+| `resources.limits.memory`         |                                       | `512Mi`                                                   |
+| `resources.requests.cpu`          |                                       | `250m`                                                    |
+| `resources.requests.memory`       |                                       | `512Mi`                                                   |
+| `persistence.enabled`        |                                       | `true`                                                         |
+| `persistence.data.storageClass`   |                                       | `generic`                                                 |
+| `persistence.data.accessMode`     |                                       | `ReadWriteMany`                                           |
+| `persistence.data.size`           |                                       | `8Gi`                                                     |
+| `persistence.config.storageClass` |                                       | `generic`                                                 |
+| `persistence.config.accessMode`   |                                       | `ReadWriteOnce`                                           |
+| `persistence.config.size`         |                                       | `1Gi`                                                     |
+| `mariadb.mariadbRootPassword`     |                                       | `developmentpw`                                           |
+| `mariadb.persistence.enabled`     |                                       | `true`                                                    |
+| `mariadb.persistence.storageClass`|                                       | `generic`                                                 |
+| `mariadb.persistence.accessMode`  |                                       | `ReadWriteOnce`                                           |
+| `mariadb.persistence.size`        |                                       | `8Gi`                                                     |
 
 work in progress
 
